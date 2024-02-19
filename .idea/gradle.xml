@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <compositeConfiguration>
+          <compositeBuild compositeDefinitionSource="SCRIPT">
+            <builds>
+              <build path="$PROJECT_DIR$/buildSrc" name="buildSrc">
+                <projects>
+                  <project path="$PROJECT_DIR$/buildSrc" />
+                </projects>
+              </build>
+            </builds>
+          </compositeBuild>
+        </compositeConfiguration>
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/buildSrc" />
+            <option value="$PROJECT_DIR$/feature_lists" />
+            <option value="$PROJECT_DIR$/feature_lists/lists_data" />
+            <option value="$PROJECT_DIR$/feature_lists/lists_domain" />
+            <option value="$PROJECT_DIR$/feature_lists/lists_presentation" />
+            <option value="$PROJECT_DIR$/feature_study" />
+            <option value="$PROJECT_DIR$/feature_study/study_data" />
+            <option value="$PROJECT_DIR$/feature_study/study_domain" />
+            <option value="$PROJECT_DIR$/feature_study/study_presentation" />
+            <option value="$PROJECT_DIR$/feature_word" />
+            <option value="$PROJECT_DIR$/feature_word/word_data" />
+            <option value="$PROJECT_DIR$/feature_word/word_domain" />
+            <option value="$PROJECT_DIR$/feature_word/word_presentation" />
+          </set>
+        </option>
+        <option name="resolveExternalAnnotations" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
