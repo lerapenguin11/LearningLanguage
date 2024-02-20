@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="list_nav_graph" type="id"/>
+    <item name="word_nav_graph" type="id"/>
+    <item name="study_nav_graph" type="id"/>
+</resources>

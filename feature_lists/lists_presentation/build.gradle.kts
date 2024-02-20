@@ -41,6 +41,8 @@ dependencies {
     implementation(Deps.appCompat)
     implementation(Deps.androidMaterial)
     implementation(Deps.constraintLayout)
+    implementation(Navigation.navigation_fragment)
+    implementation(Navigation.navigation)
     testImplementation(TestImplementation.junit)
     androidTestImplementation(AndroidTestImplementation.junit)
     androidTestImplementation(AndroidTestImplementation.espresso)

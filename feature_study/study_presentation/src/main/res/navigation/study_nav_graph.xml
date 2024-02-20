@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/study_nav_graph"
+    app:startDestination="@id/studyFragment">
+
+    <fragment
+        android:id="@+id/studyFragment"
+        android:name="com.example.study_presentation.StudyFragment"
+        android:label="fragment_study"
+        tools:layout="@layout/fragment_study" />
+</navigation>

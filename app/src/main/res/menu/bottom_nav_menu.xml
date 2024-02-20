@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/words"
+        android:id="@+id/word_nav_graph"
         android:icon="@drawable/ic_world"
         android:title="@string/text_words" />
 
     <item
-        android:id="@+id/learning"
+        android:id="@+id/study_nav_graph"
         android:icon="@drawable/ic_learning"
         android:title="@string/text_learning" />
 
     <item
-        android:id="@+id/lists"
+        android:id="@+id/list_nav_graph"
         android:icon="@drawable/ic_list"
         android:title="@string/text_lists" />
 </menu>

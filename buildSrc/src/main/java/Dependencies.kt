@@ -34,6 +34,13 @@ object Versions {
     const val mockito_core = "4.0.0"
     const val mockito_kotlin = "4.0.0"
     const val mockito_inline = "3.11.2"
+    const val navigation = "2.7.6"
+    const val navigation_fragment = "2.7.6"
+}
+
+object Navigation{
+    const val navigation_fragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation_fragment}"
+    const val navigation = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
 }
 
 object Libraries{

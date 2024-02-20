@@ -3,4 +3,6 @@
     <string name="text_words">Слова</string>
     <string name="text_learning">Изучение</string>
     <string name="text_lists">Списки</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
