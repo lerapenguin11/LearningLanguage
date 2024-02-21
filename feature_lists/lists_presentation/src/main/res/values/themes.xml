@@ -36,17 +36,19 @@
         <item name="android:backgroundTint">@color/md_theme_light_surfaceVariant</item>
         <item name="cardElevation">0dp</item>
         <item name="cardCornerRadius">30dp</item>
+        <item name="strokeWidth">0dp</item>
     </style>
+
 
     <style name="TextItemTopStyle" parent="TextAppearance.AppCompat">
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/md_theme_dark_inverseSurface</item>
+        <item name="android:textColor">@color/md_theme_light_onSecondaryContainer</item>
         <item name="android:fontFamily">@font/montserrat</item>
     </style>
 
     <style name="TextItemBottomStyle" parent="TextAppearance.AppCompat">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/md_theme_dark_inverseSurface</item>
+        <item name="android:textColor">@color/md_theme_light_onSecondaryContainer</item>
         <item name="android:fontFamily">@font/montserrat_italic</item>
     </style>
 </resources>
