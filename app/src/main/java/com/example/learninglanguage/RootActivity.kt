@@ -13,7 +13,7 @@ import com.example.word_presentation.WordsFragment
 class RootActivity : AppCompatActivity(R.layout.activity_root) {
     private lateinit var binding: ActivityRootBinding
     private var currentNavController: LiveData<NavController>? = null
-    lateinit var nav : NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRootBinding.inflate(layoutInflater)
@@ -21,6 +21,13 @@ class RootActivity : AppCompatActivity(R.layout.activity_root) {
 
         binding.topAppBar.setTitleTextAppearance(this, R.style.TopAppBarTextAppearance)
 
+        setNavController()
+        if (currentNavController != null){
+            setTitleToolbar()
+        }
+    }
+
+    private fun setNavController() {
         val navGraphIds = listOf(
             com.example.word_presentation.R.navigation.word_nav_graph,
             com.example.study_presentation.R.navigation.study_nav_graph,
@@ -34,8 +41,6 @@ class RootActivity : AppCompatActivity(R.layout.activity_root) {
             intent = this.intent
         )
         currentNavController = controller
-
-        setTitleToolbar()
     }
 
     private fun setTitleToolbar() {
