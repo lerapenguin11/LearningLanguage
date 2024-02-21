@@ -1,7 +1,6 @@
 <resources>
     <color name="seed">#515b90</color>
-    <color name="color_toolbar_light">#EFEDF7</color>
-    <color name="color_toolbar_dark">#282831</color>
+    <color name="md_theme_dark_card">#2A292F</color>
     <color name="md_theme_light_primary">#4858A9</color>
     <color name="md_theme_light_onPrimary">#FFFFFF</color>
     <color name="md_theme_light_primaryContainer">#DEE1FF</color>

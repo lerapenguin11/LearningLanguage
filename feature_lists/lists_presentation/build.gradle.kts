@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id ("kotlin-android")
 }
 
 android {
@@ -43,6 +44,7 @@ dependencies {
     implementation(Deps.constraintLayout)
     implementation(Navigation.navigation_fragment)
     implementation(Navigation.navigation)
+    implementation(Deps.fragment)
     testImplementation(TestImplementation.junit)
     androidTestImplementation(AndroidTestImplementation.junit)
     androidTestImplementation(AndroidTestImplementation.espresso)
