@@ -36,6 +36,15 @@ object Versions {
     const val mockito_inline = "3.11.2"
     const val navigation = "2.7.6"
     const val navigation_fragment = "2.7.6"
+    const val firebase_bom = "32.7.2"
+    const val firebase_firestore = "24.10.2"
+    const val firebase_analytics = "21.5.1"
+}
+
+object Firebase{
+    const val firebase_bom = "com.google.firebase:firebase-bom:${Versions.firebase_bom}"
+    const val firebase_analytics = "com.google.firebase:firebase-analytics:"
+    const val firebase_firestore = "com.google.firebase:firebase-firestore:${Versions.firebase_firestore}"
 }
 
 object Navigation{

@@ -1,6 +1,8 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id ("kotlin-kapt")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -38,6 +40,9 @@ dependencies {
     implementation(Deps.appCompat)
     implementation(Deps.androidMaterial)
     implementation(Deps.constraintLayout)
+    implementation(Firebase.firebase_firestore)
+    implementation(Firebase.firebase_analytics)
+    implementation(platform(Firebase.firebase_firestore))
     testImplementation(TestImplementation.junit)
     androidTestImplementation(AndroidTestImplementation.junit)
     androidTestImplementation(AndroidTestImplementation.espresso)
