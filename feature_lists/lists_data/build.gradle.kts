@@ -1,8 +1,9 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id ("kotlin-kapt")
+    id("kotlin-kapt")
     id("com.google.gms.google-services")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -35,14 +36,21 @@ android {
 }
 
 dependencies {
+    implementation(project(":common:common_utils"))
+    implementation(project(":feature_lists:lists_domain"))
 
     implementation(Deps.core)
     implementation(Deps.appCompat)
     implementation(Deps.androidMaterial)
     implementation(Deps.constraintLayout)
-    implementation(Firebase.firebase_firestore)
+    implementation(Firebase.firebase_bom)
     implementation(Firebase.firebase_analytics)
     implementation(platform(Firebase.firebase_firestore))
+    implementation(platform(Deps.kotlin_bom))
+    implementation(DaggerHilt.hilt)
+    implementation("com.google.firebase:firebase-firestore-ktx:24.10.2")
+    kapt(DaggerHilt.hiltAndroidCompiler)
+    //kapt(DaggerHilt.hiltCompiler)
     testImplementation(TestImplementation.junit)
     androidTestImplementation(AndroidTestImplementation.junit)
     androidTestImplementation(AndroidTestImplementation.espresso)

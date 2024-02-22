@@ -5,11 +5,14 @@ import android.os.Bundle
 import androidx.fragment.app.ListFragment
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
+import com.example.common_utils.utils.initFirebase
 import com.example.learninglanguage.databinding.ActivityRootBinding
 import com.example.learninglanguage.navigation.setupWithNavController
 import com.example.study_presentation.StudyFragment
 import com.example.word_presentation.WordsFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RootActivity : AppCompatActivity(R.layout.activity_root) {
     private lateinit var binding: ActivityRootBinding
     private var currentNavController: LiveData<NavController>? = null
@@ -25,6 +28,11 @@ class RootActivity : AppCompatActivity(R.layout.activity_root) {
         if (currentNavController != null){
             setTitleToolbar()
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        initFirebase()
     }
 
     private fun setNavController() {

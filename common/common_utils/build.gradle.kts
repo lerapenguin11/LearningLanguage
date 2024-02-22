@@ -1,12 +1,11 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
-    id("com.google.dagger.hilt.android")
+    id("com.google.gms.google-services")
 }
 
 android {
-    namespace = "com.example.lists_dpmain"
+    namespace = "com.example.common_utils"
     compileSdk = 34
 
     defaultConfig {
@@ -35,24 +34,15 @@ android {
 }
 
 dependencies {
-    implementation(project(":common:common_utils"))
 
     implementation(Deps.core)
     implementation(Deps.appCompat)
     implementation(Deps.androidMaterial)
-    implementation(platform(Deps.kotlin_bom))
-    implementation(Deps.constraintLayout)
-    implementation(DaggerHilt.hilt)
-    kapt(DaggerHilt.hiltAndroidCompiler)
-//    annotationProcessor(DaggerHilt.hiltCompiler)
-    constraints {
-        implementation(Coroutines.kotlin_stdlib_jdk7) {
-            because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
-        }
-        implementation(Coroutines.kotlin_stdlib_jdk8) {
-            because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
-        }
-    }
+    implementation(Firebase.firebase_bom)
+    implementation(Firebase.firebase_analytics)
+    implementation(platform(Firebase.firebase_firestore))
+    implementation("com.google.firebase:firebase-firestore-ktx:24.10.2")
+    implementation("com.google.firebase:firebase-database-ktx:20.3.0")
     testImplementation(TestImplementation.junit)
     androidTestImplementation(AndroidTestImplementation.junit)
     androidTestImplementation(AndroidTestImplementation.espresso)

@@ -15,7 +15,7 @@ object Versions {
     const val kotlinCoroutines = "1.6.1"
     const val coroutineLifecycleScope = "2.5.1"
     const val viewModelDeligate = "1.6.0"
-    const val dagger = "2.44"
+    const val dagger = "2.50"
     const val hiltCompiler = "1.0.0"
     const val roomVersion = "2.4.3"
     const val swipeRefresh = "1.1.0"
@@ -29,7 +29,7 @@ object Versions {
     const val santalu_maskara = "1.0.0"
     const val photoView = "2.3.0"
     const val zoomage = "1.3.1"
-    const val kotlin_bom = "1.8.0"
+    const val kotlin_bom = "1.9.10"
     const val test_junit = "5.8.2"
     const val mockito_core = "4.0.0"
     const val mockito_kotlin = "4.0.0"
@@ -43,7 +43,7 @@ object Versions {
 
 object Firebase{
     const val firebase_bom = "com.google.firebase:firebase-bom:${Versions.firebase_bom}"
-    const val firebase_analytics = "com.google.firebase:firebase-analytics:"
+    const val firebase_analytics = "com.google.firebase:firebase-analytics:${Versions.firebase_analytics}"
     const val firebase_firestore = "com.google.firebase:firebase-firestore:${Versions.firebase_firestore}"
 }
 
