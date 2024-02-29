@@ -39,6 +39,7 @@ object Versions {
     const val firebase_bom = "32.7.2"
     const val firebase_firestore = "24.10.2"
     const val firebase_analytics = "21.5.1"
+    const val flexbox = "3.0.0"
 }
 
 object Firebase{
@@ -58,6 +59,7 @@ object Libraries{
     const val santalu_maskara = "com.github.santalu:maskara:${Versions.santalu_maskara}"
     const val photoView = "com.github.chrisbanes:PhotoView:${Versions.photoView}"
     const val zoomage = "com.jsibbold:zoomage:${Versions.zoomage}"
+    const val flexbox = "com.google.android.flexbox:flexbox:${Versions.flexbox}"
 }
 
 object Deps {

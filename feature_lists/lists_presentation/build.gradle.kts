@@ -69,6 +69,7 @@ dependencies {
     implementation(CoroutinesLifecycleScope.lifeCycleRuntime)
     implementation (ViewModelDelegate.viewModelDeligate)
     implementation(platform(Deps.kotlin_bom))
+    implementation(Libraries.flexbox)
     testImplementation(TestImplementation.junit)
     androidTestImplementation(AndroidTestImplementation.junit)
     androidTestImplementation(AndroidTestImplementation.espresso)

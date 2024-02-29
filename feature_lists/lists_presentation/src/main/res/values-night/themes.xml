@@ -49,4 +49,31 @@
         <item name="android:textColor">@color/md_theme_light_surfaceVariant</item>
         <item name="android:fontFamily">@font/montserrat_italic</item>
     </style>
+
+    <style name="CardWordNotFavListStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="android:backgroundTint">@color/md_theme_dark_card</item>
+        <item name="cardElevation">0dp</item>
+        <item name="cardCornerRadius">30dp</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <style name="CardWordFavListStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="android:backgroundTint">@color/md_theme_dark_card</item>
+        <item name="cardElevation">2dp</item>
+        <item name="cardCornerRadius">30dp</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
+    <style name="CardTranslationListStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="android:backgroundTint">@color/md_theme_dark_inversePrimary</item>
+        <item name="cardElevation">0dp</item>
+        <item name="cardCornerRadius">5dp</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
+    <style name="TextItemTranslationBottomStyle" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/md_theme_dark_surfaceTint</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
 </resources>
