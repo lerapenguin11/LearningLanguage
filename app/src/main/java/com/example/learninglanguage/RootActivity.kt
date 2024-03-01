@@ -2,18 +2,21 @@ package com.example.learninglanguage
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.ListFragment
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import com.example.common_utils.utils.initFirebase
 import com.example.learninglanguage.databinding.ActivityRootBinding
 import com.example.learninglanguage.navigation.setupWithNavController
+import com.example.lists_presentation.ui.WordsListFragment
 import com.example.study_presentation.StudyFragment
 import com.example.word_presentation.WordsFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class RootActivity : AppCompatActivity(R.layout.activity_root) {
+class RootActivity : AppCompatActivity(R.layout.activity_root),
+    WordsListFragment.OnToolbarTitleChangeListener{
     private lateinit var binding: ActivityRootBinding
     private var currentNavController: LiveData<NavController>? = null
 
@@ -27,6 +30,29 @@ class RootActivity : AppCompatActivity(R.layout.activity_root) {
         setNavController()
         if (currentNavController != null){
             setTitleToolbar()
+            showAndHideBottomNavigationBar()
+        }
+    }
+
+    private fun showBottomNavigationBar(){
+        binding.navView.visibility = View.VISIBLE
+    }
+
+    private fun hideBottomNavigationBar(){
+        binding.navView.visibility = View.GONE
+    }
+
+    private fun showAndHideBottomNavigationBar() {
+        currentNavController!!.observeForever {navController ->
+            navController.addOnDestinationChangedListener { _, destination, _ ->
+                when (destination.id) {
+                    com.example.word_presentation.R.id.wordsFragment -> showBottomNavigationBar()
+                    com.example.study_presentation.R.id.studyFragment -> showBottomNavigationBar()
+                    com.example.lists_presentation.R.id.listsFragment -> showBottomNavigationBar()
+                    com.example.lists_presentation.R.id.wordsListFragment -> hideBottomNavigationBar()
+                    else -> showBottomNavigationBar()
+                }
+            }
         }
     }
 
@@ -55,14 +81,18 @@ class RootActivity : AppCompatActivity(R.layout.activity_root) {
         currentNavController!!.observeForever {navController ->
             navController.addOnDestinationChangedListener { _, destination, _ ->
                 val fragment = when (destination.id) {
-                    com.example.word_presentation.R.id.wordsFragment -> R.string.text_words
-                    com.example.study_presentation.R.id.studyFragment -> R.string.text_learning
-                    com.example.lists_presentation.R.id.listsFragment -> R.string.text_lists
-                    else -> R.string.app_name
+                    com.example.word_presentation.R.id.wordsFragment -> "Слова"
+                    com.example.study_presentation.R.id.studyFragment -> "Изучение"
+                    com.example.lists_presentation.R.id.listsFragment -> "Списки"
+                    else -> "Top words"
                 }
-                binding.topAppBar.setTitle(fragment)
+                binding.topAppBar.title = fragment
                 binding.topAppBar
             }
         }
+    }
+
+    override fun onTitleChanged(title: String) {
+        binding.topAppBar.title = title
     }
 }

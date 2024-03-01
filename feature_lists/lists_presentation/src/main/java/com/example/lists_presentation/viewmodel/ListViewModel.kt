@@ -23,10 +23,10 @@ class ListViewModel @Inject constructor(
     val errorTopList : LiveData<String> = _errorTopList
 
     init {
-        getPatient()
+        getTopList()
     }
 
-    private fun getPatient() {
+    private fun getTopList() {
         viewModelScope.launch {
             when (val topListResult = getTopListWordsUseCase.invoke()) {
                 is ResultFirestore.Success -> {

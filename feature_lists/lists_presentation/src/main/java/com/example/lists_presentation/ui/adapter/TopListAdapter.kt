@@ -12,6 +12,8 @@ import com.example.lists_presentation.ui.adapter.viewHolder.TopListViewHolder
 class TopListAdapter : ListAdapter<TopList, TopListViewHolder>(
     TopListItemDiffCallback())
 {
+    var onWordListClickListener : ((TopList) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopListViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list,
             parent, false)
@@ -23,6 +25,9 @@ class TopListAdapter : ListAdapter<TopList, TopListViewHolder>(
         val top = getItem(position)
         holder.title.text = top.title
         holder.newWords.text = "${new_words} ${top.new_words}"
+        holder.itemView.setOnClickListener {
+            onWordListClickListener?.invoke(top)
+        }
     }
 
     companion object{

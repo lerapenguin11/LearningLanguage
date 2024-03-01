@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">LearningLanguage</string>
     <string name="text_words">Слова</string>
     <string name="text_learning">Изучение</string>

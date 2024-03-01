@@ -9,5 +9,19 @@
         android:id="@+id/listsFragment"
         android:name="com.example.lists_presentation.ui.ListsFragment"
         android:label="fragment_lists"
-        tools:layout="@layout/fragment_lists" />
+        tools:layout="@layout/fragment_lists" >
+        <action
+            android:id="@+id/action_listsFragment_to_wordsListFragment"
+            app:destination="@id/wordsListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/wordsListFragment"
+        android:name="com.example.lists_presentation.ui.WordsListFragment"
+        android:label="fragment_words_list"
+        tools:layout="@layout/fragment_words_list" >
+        <action
+            android:id="@+id/action_wordsListFragment_to_listsFragment"
+            app:destination="@id/listsFragment" />
+    </fragment>
 </navigation>

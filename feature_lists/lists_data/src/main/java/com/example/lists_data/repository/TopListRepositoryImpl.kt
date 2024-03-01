@@ -4,47 +4,84 @@ import android.util.Log
 import com.example.common_utils.common.ResultFirestore
 import com.example.common_utils.utils.FIRE_STORE_DATABASE
 import com.example.common_utils.utils.TOP_LIST_COLLECTION
+import com.example.common_utils.utils.TOP_WORDS
 import com.example.lists_data.mappers.TopListMapper
 import com.example.lists_data.models.TopListModels
+import com.example.lists_data.models.WordListModels
 import com.example.lists_domain.entity.TopList
+import com.example.lists_domain.entity.WordList
 import com.example.lists_domain.repository.TopListRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import com.google.firebase.firestore.*
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.yield
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 
 class TopListRepositoryImpl : TopListRepository {
     private val mapper = TopListMapper()
-    private val topListDoc = arrayListOf<TopListModels>()
+    private val _topListDoc = MutableStateFlow<List<TopListModels>>(emptyList())
+    private val topListDoc: StateFlow<List<TopListModels>> = _topListDoc
+
+    private val _wordListDoc = MutableStateFlow<List<WordListModels>>(emptyList())
+    private val wordListDoc: StateFlow<List<WordListModels>> = _wordListDoc
     override suspend fun getTopList(): ResultFirestore<List<TopList>> =
         withContext(Dispatchers.IO){
-            val topList = eventChangeListenerTopList()
+            eventChangeListenerTopList()
             delay(1000)
             try {
-                return@withContext ResultFirestore.Success(mapper.toTopList(topList))
+                return@withContext ResultFirestore.Success(mapper.toTopList(topListDoc))
             } catch (e: Exception) {
                 return@withContext ResultFirestore.Error(e)
             }
         }
 
-    private suspend fun eventChangeListenerTopList() : List<TopListModels> =
-        withContext(Dispatchers.IO) {
-            FIRE_STORE_DATABASE.collection(TOP_LIST_COLLECTION)
-                .addSnapshotListener { value, error ->
-                    if (error != null){
-                        Log.d(TAG_FIRESTORE_ERROR, error.message.toString())
-                    } else{
-                        for (dc: DocumentChange in value ?.documentChanges!!)
-                        {
-                            if (dc.type == DocumentChange.Type.ADDED) {
-                                topListDoc.add(dc.document.toObject(TopListModels::class.java))
-                            }
-                        }
+    override suspend fun getWordList(documentId : String): ResultFirestore<List<WordList>> =
+        withContext(Dispatchers.IO){
+            eventChangeListenerWordList(documentId)
+            delay(1000)
+            try {
+                return@withContext ResultFirestore.Success(mapper.toWordList(wordListDoc))
+            } catch (e: Exception) {
+                return@withContext ResultFirestore.Error(e)
+            }
+        }
+
+    private fun eventChangeListenerWordList(documentId: String) {
+        FIRE_STORE_DATABASE.collection(TOP_LIST_COLLECTION)
+            .document(documentId).collection(TOP_WORDS)
+            .addSnapshotListener { value, error ->
+                if (error != null){
+                    Log.d(TAG_FIRESTORE_ERROR, error.message.toString())
+                    return@addSnapshotListener
+                }
+                val newList = mutableListOf<WordListModels>()
+                for (dc: DocumentChange in value?.documentChanges!!) {
+                    if (dc.type == DocumentChange.Type.ADDED) {
+                        newList.add(dc.document.toObject(WordListModels::class.java))
                     }
                 }
-            return@withContext topListDoc
-        }
+                _wordListDoc.value = newList
+            }
+    }
+
+    private fun eventChangeListenerTopList(){
+        FIRE_STORE_DATABASE.collection(TOP_LIST_COLLECTION)
+            .addSnapshotListener { value, error ->
+                if (error != null){
+                    Log.d(TAG_FIRESTORE_ERROR, error.message.toString())
+                    return@addSnapshotListener
+                }
+                val newList = mutableListOf<TopListModels>()
+                for (dc: DocumentChange in value ?.documentChanges!!)
+                {
+                    if (dc.type == DocumentChange.Type.ADDED) {
+                        newList.add(dc.document.toObject(TopListModels::class.java))
+                    }
+                }
+                _topListDoc.value = newList
+            }
+    }
 
 
     companion object{

@@ -22,10 +22,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-        tools:listitem="@layout/item_word_not_fav"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearProgressIndicator" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_word_not_fav" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
