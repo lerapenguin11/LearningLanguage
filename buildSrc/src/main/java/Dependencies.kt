@@ -40,6 +40,7 @@ object Versions {
     const val firebase_firestore = "24.10.2"
     const val firebase_analytics = "21.5.1"
     const val flexbox = "3.0.0"
+    const val gson = "2.8.7"
 }
 
 object Firebase{
@@ -60,6 +61,7 @@ object Libraries{
     const val photoView = "com.github.chrisbanes:PhotoView:${Versions.photoView}"
     const val zoomage = "com.jsibbold:zoomage:${Versions.zoomage}"
     const val flexbox = "com.google.android.flexbox:flexbox:${Versions.flexbox}"
+    const val gson = "com.google.code.gson:gson:${Versions.gson}"
 }
 
 object Deps {

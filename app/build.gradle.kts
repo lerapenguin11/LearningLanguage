@@ -48,6 +48,7 @@ dependencies {
     implementation(project(":feature_lists:lists_presentation"))
     implementation(project(":feature_word:word_presentation"))
     implementation(project(":common:common_utils"))
+    implementation(project(":feature_lists:lists_data"))
 
     implementation(Deps.core)
     implementation(platform(Deps.kotlin_bom))
@@ -61,6 +62,8 @@ dependencies {
     implementation(platform(Firebase.firebase_firestore))
     implementation(DaggerHilt.hilt)
     kapt(DaggerHilt.hiltAndroidCompiler)
+    implementation(Room.room)
+    implementation(Room.roomCompiler)
 //    kapt(DaggerHilt.hiltCompiler)
     testImplementation(TestImplementation.junit)
     androidTestImplementation(AndroidTestImplementation.junit)

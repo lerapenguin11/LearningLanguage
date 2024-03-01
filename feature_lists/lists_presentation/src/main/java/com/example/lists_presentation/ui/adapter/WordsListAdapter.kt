@@ -20,6 +20,6 @@ class WordsListAdapter: ListAdapter<WordList, WordListViewHolder>(
     override fun onBindViewHolder(holder: WordListViewHolder, position: Int) {
         val word = getItem(position)
         holder.word.text = word.word
-        holder.translation.text = word.translation.toString()
+        holder.translation.text = word.translation.toString().replace(Regex("[\\[\\]]"), "")
     }
 }

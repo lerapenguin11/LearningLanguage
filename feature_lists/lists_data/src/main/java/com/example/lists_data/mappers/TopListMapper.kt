@@ -24,17 +24,4 @@ class TopListMapper
         }
         return list
     }
-
-    fun toWordList(wordList: StateFlow<List<WordListModels>>) : List<WordList>{
-        val list = arrayListOf<WordList>()
-        for (i in wordList.value){
-            val model = WordList(
-                id = i.id,
-                word = i.word,
-                translation = i.translation
-            )
-            list.add(model)
-        }
-        return list
-    }
 }

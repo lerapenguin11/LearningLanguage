@@ -23,8 +23,6 @@ class TopListRepositoryImpl : TopListRepository {
     private val _topListDoc = MutableStateFlow<List<TopListModels>>(emptyList())
     private val topListDoc: StateFlow<List<TopListModels>> = _topListDoc
 
-    private val _wordListDoc = MutableStateFlow<List<WordListModels>>(emptyList())
-    private val wordListDoc: StateFlow<List<WordListModels>> = _wordListDoc
     override suspend fun getTopList(): ResultFirestore<List<TopList>> =
         withContext(Dispatchers.IO){
             eventChangeListenerTopList()
@@ -35,35 +33,6 @@ class TopListRepositoryImpl : TopListRepository {
                 return@withContext ResultFirestore.Error(e)
             }
         }
-
-    override suspend fun getWordList(documentId : String): ResultFirestore<List<WordList>> =
-        withContext(Dispatchers.IO){
-            eventChangeListenerWordList(documentId)
-            delay(1000)
-            try {
-                return@withContext ResultFirestore.Success(mapper.toWordList(wordListDoc))
-            } catch (e: Exception) {
-                return@withContext ResultFirestore.Error(e)
-            }
-        }
-
-    private fun eventChangeListenerWordList(documentId: String) {
-        FIRE_STORE_DATABASE.collection(TOP_LIST_COLLECTION)
-            .document(documentId).collection(TOP_WORDS)
-            .addSnapshotListener { value, error ->
-                if (error != null){
-                    Log.d(TAG_FIRESTORE_ERROR, error.message.toString())
-                    return@addSnapshotListener
-                }
-                val newList = mutableListOf<WordListModels>()
-                for (dc: DocumentChange in value?.documentChanges!!) {
-                    if (dc.type == DocumentChange.Type.ADDED) {
-                        newList.add(dc.document.toObject(WordListModels::class.java))
-                    }
-                }
-                _wordListDoc.value = newList
-            }
-    }
 
     private fun eventChangeListenerTopList(){
         FIRE_STORE_DATABASE.collection(TOP_LIST_COLLECTION)
