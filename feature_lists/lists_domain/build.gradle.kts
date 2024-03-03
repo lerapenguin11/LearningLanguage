@@ -44,7 +44,6 @@ dependencies {
     implementation(Deps.constraintLayout)
     implementation(DaggerHilt.hilt)
     kapt(DaggerHilt.hiltAndroidCompiler)
-//    annotationProcessor(DaggerHilt.hiltCompiler)
     constraints {
         implementation(Coroutines.kotlin_stdlib_jdk7) {
             because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")

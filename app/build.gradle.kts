@@ -68,6 +68,5 @@ dependencies {
     testImplementation(TestImplementation.junit)
     androidTestImplementation(AndroidTestImplementation.junit)
     androidTestImplementation(AndroidTestImplementation.espresso)
-
     implementation("com.android.support:multidex:1.0.3")
 }

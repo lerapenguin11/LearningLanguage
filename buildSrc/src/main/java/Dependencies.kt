@@ -17,7 +17,7 @@ object Versions {
     const val viewModelDeligate = "1.6.0"
     const val dagger = "2.50"
     const val hiltCompiler = "1.0.0"
-    const val roomVersion = "2.4.3"
+    const val roomVersion = "2.6.1"
     const val swipeRefresh = "1.1.0"
     const val kotlin_coroutines_adapter = "0.9.2"
     const val lifecycle_version = "2.6.1"
@@ -137,6 +137,7 @@ object DaggerHilt {
 object Room {
     const val roomCompiler = "androidx.room:room-compiler:${Versions.roomVersion}"
     const val room = "androidx.room:room-ktx:${Versions.roomVersion}"
+    const val room_runtime = "androidx.room:room-runtime:${Versions.roomVersion}"
 }
 
 object CircularProgressBar {

@@ -36,7 +36,7 @@
 
             <Button
                 style="?attr/materialIconButtonFilledTonalStyle"
-                android:id="@+id/iconButton"
+                android:id="@+id/bt_add_word"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:contentDescription="@string/text_add_word"

@@ -52,7 +52,6 @@ dependencies {
     implementation(Deps.fragment)
     implementation(DaggerHilt.hilt)
     kapt(DaggerHilt.hiltAndroidCompiler)
-    //annotationProcessor(DaggerHilt.hiltCompiler)
     implementation(Coroutines.lifecycle_viewmodel)
     implementation(Coroutines.lifecycle_livedata)
             constraints {

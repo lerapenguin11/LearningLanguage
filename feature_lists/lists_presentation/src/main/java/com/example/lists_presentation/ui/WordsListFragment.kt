@@ -52,6 +52,16 @@ class WordsListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setToolbarTitle()
         setWordsListRecyclerView()
+        addAndDeleteWord()
+    }
+
+    private fun addAndDeleteWord() {
+        adapter.bookmark = {
+            wordListViewModel.bookmark(it)
+        }
+        adapter.unbookmark = {
+            wordListViewModel.unbookmark(it)
+        }
     }
 
     private fun setToolbarTitle() {

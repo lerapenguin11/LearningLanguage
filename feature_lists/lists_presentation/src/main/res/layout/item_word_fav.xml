@@ -8,6 +8,9 @@
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
     android:layout_marginTop="8dp"
+    android:checkable="true"
+    android:clickable="true"
+    android:focusable="true"
     style="@style/CardWordFavListStyle">
 
     <LinearLayout
@@ -36,7 +39,7 @@
 
             <Button
                 style="?attr/materialIconButtonFilledTonalStyle"
-                android:id="@+id/iconButton"
+                android:id="@+id/bt_delete_word"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:contentDescription="@string/text_add_word"

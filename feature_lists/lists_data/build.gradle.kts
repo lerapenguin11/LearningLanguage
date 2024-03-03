@@ -1,3 +1,5 @@
+import Versions.lifecycle_version
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -45,14 +47,15 @@ dependencies {
     implementation(Deps.constraintLayout)
     implementation(Firebase.firebase_bom)
     implementation(Firebase.firebase_analytics)
-    implementation(platform(Firebase.firebase_firestore))
+    //implementation(platform(Firebase.firebase_firestore))
     implementation(platform(Deps.kotlin_bom))
     implementation(DaggerHilt.hilt)
-    implementation("com.google.firebase:firebase-firestore-ktx:24.10.2")
+    implementation("com.google.firebase:firebase-firestore-ktx:24.10.3")
     kapt(DaggerHilt.hiltAndroidCompiler)
     implementation(Room.room)
     implementation(Room.roomCompiler)
     implementation(Libraries.gson)
+    implementation(Room.room_runtime)
     //kapt(DaggerHilt.hiltCompiler)
     testImplementation(TestImplementation.junit)
     androidTestImplementation(AndroidTestImplementation.junit)
