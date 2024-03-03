@@ -53,7 +53,7 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore-ktx:24.10.3")
     kapt(DaggerHilt.hiltAndroidCompiler)
     implementation(Room.room)
-    implementation(Room.roomCompiler)
+    kapt(Room.roomCompiler)
     implementation(Libraries.gson)
     implementation(Room.room_runtime)
     //kapt(DaggerHilt.hiltCompiler)

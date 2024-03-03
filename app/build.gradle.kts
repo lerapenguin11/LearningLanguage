@@ -63,7 +63,7 @@ dependencies {
     implementation(DaggerHilt.hilt)
     kapt(DaggerHilt.hiltAndroidCompiler)
     implementation(Room.room)
-    implementation(Room.roomCompiler)
+    kapt(Room.roomCompiler)
 //    kapt(DaggerHilt.hiltCompiler)
     testImplementation(TestImplementation.junit)
     androidTestImplementation(AndroidTestImplementation.junit)
