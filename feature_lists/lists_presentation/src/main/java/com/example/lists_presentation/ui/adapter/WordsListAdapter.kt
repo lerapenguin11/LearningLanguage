@@ -3,8 +3,6 @@ package com.example.lists_presentation.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.example.lists_domain.entity.TopList
-import com.example.lists_domain.entity.WordList
 import com.example.lists_presentation.R
 import com.example.lists_presentation.entity.BookmarkStatus
 import com.example.lists_presentation.entity.WordsListWithStatus

@@ -45,6 +45,12 @@
         <item name="android:fontFamily">@font/montserrat</item>
     </style>
 
+    <style name="TextItemTopNotFavStyle" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/md_theme_light_onSecondaryContainer</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
     <style name="TextItemBottomStyle" parent="TextAppearance.AppCompat">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/md_theme_light_onSecondaryContainer</item>
@@ -75,6 +81,12 @@
     <style name="TextItemTranslationBottomStyle" parent="TextAppearance.AppCompat">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/md_theme_light_onSurfaceVariant</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="TextItemBottomNotFavStyle" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/md_theme_light_onSecondaryContainer</item>
         <item name="android:fontFamily">@font/montserrat</item>
     </style>
 </resources>
