@@ -11,5 +11,5 @@ class WordListViewHolder(view : View) : RecyclerView.ViewHolder(view)
     val word : TextView = view.findViewById(R.id.tv_title_item_list_word)
     val translation : TextView = view.findViewById(R.id.tv_desc_item_list_word)
     val btAddWord : Button = view.findViewById(R.id.bt_add_word)
-    val btDeleteWord : Button = view.findViewById(R.id.bt_delete_word)
+    //val btDeleteWord : Button = view.findViewById(R.id.bt_delete_word)
 }

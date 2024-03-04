@@ -33,11 +33,10 @@ class WordsListAdapter: ListAdapter<WordsListWithStatus, WordListViewHolder>(
         holder.word.text = word.word
         holder.translation.text = word.translation.toString().replace(
             Regex("[\\[\\]]"), "")
-        holder.btAddWord.setOnClickListener {
-            bookmark?.invoke(word)
-        }
-        holder.btDeleteWord.setOnClickListener {
-            unbookmark?.invoke(word)
+
+        when(word.status){
+            BookmarkStatus.BOOKMARKED -> holder.btAddWord.setOnClickListener { unbookmark?.invoke(word) }
+            BookmarkStatus.UNBOOKMARKED -> holder.btAddWord.setOnClickListener { bookmark?.invoke(word) }
         }
     }
 
