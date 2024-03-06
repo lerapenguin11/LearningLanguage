@@ -42,7 +42,7 @@
     <style name="TextItemTopStyle" parent="TextAppearance.AppCompat">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/md_theme_light_onSecondaryContainer</item>
-        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:fontFamily">@font/montserrat_medium</item>
     </style>
 
     <style name="TextItemTopNotFavStyle" parent="TextAppearance.AppCompat">
@@ -52,7 +52,7 @@
     </style>
 
     <style name="TextItemBottomStyle" parent="TextAppearance.AppCompat">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/md_theme_light_onSecondaryContainer</item>
         <item name="android:fontFamily">@font/montserrat_italic</item>
     </style>
