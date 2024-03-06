@@ -38,7 +38,6 @@ class ListsFragment : Fragment() {
 
     private fun setOnClickListenerItemList() {
         adapter.onWordListClickListener = {
-            //view?.findNavController()?.navigate(R.id.wordsListFragment)
             newInstanceWordsListFragment(it.title)
         }
     }
@@ -55,6 +54,7 @@ class ListsFragment : Fragment() {
         adapter = TopListAdapter()
         listViewModel.topList.observe(viewLifecycleOwner, Observer { topLists ->
             adapter.submitList(topLists)
+            binding.linearProgressIndicator.visibility = View.GONE
 
         })
         binding.rvTopList.adapter = adapter
