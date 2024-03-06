@@ -2,10 +2,11 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    style="@style/CardListStyle"
     android:checkable="true"
     android:clickable="true"
     android:focusable="true"
+    style="@style/CardListStyle"
+    app:cardCornerRadius="0dp"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -17,15 +18,14 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+
             android:layout_gravity="center_vertical">
 
             <ProgressBar
                 android:id="@+id/progress_bar"
                 style="@style/CircularDeterminateProgressBar"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-                android:padding="-10dp"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +60,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginStart="8dp"
             android:orientation="vertical">
 
             <LinearLayout

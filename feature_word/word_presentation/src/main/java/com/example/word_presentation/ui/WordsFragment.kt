@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.example.word_domain.model.WordsList
 import com.example.word_presentation.adapter.WordsAdapter
 import com.example.word_presentation.databinding.FragmentWordsBinding
 import com.example.word_presentation.viewmodel.WordsViewModel
@@ -39,19 +40,28 @@ class WordsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        checkWordsList()
-        visibleAndGoneText()
+        observerWordList()
     }
 
-    private fun checkWordsList() {
-        checkWordList = wordListViewModel.wordList.value != null &&
-                wordListViewModel.wordList.value?.toList()?.size != 0
-    }
-
-    private fun setWordRecyclerView() {
-        wordListViewModel.wordList.observe(viewLifecycleOwner, Observer { wordLists ->
-            adapter.submitList(wordLists)
+    private fun observerWordList() {
+        wordListViewModel.wordList.observe(viewLifecycleOwner, Observer { words ->
+            checkWordsList(words)
+            checkingList(words)
         })
+    }
+
+    private fun checkWordsList(words: List<WordsList>?) {
+        if (words != null && words.size != 0){
+            checkWordList = true
+            visibleAndGoneText()
+        } else{
+            checkWordList = false
+            visibleAndGoneText()
+        }
+    }
+
+    private fun setWordRecyclerView(words: List<WordsList>) {
+        adapter.submitList(words)
         binding.rvWordsList.adapter = adapter
     }
 
@@ -59,21 +69,18 @@ class WordsFragment : Fragment() {
         when(checkWordList){
             true -> binding.tvTextNoWord.visibility = View.GONE
             false -> binding.tvTextNoWord.visibility = View.VISIBLE
-            else -> {
-                Toast.makeText(requireContext(),
-                    "Возникла проблема!", Toast.LENGTH_SHORT).show()}
+            else -> {}
         }
     }
 
     override fun onResume() {
         super.onResume()
         visibleAndGoneText()
-        checkingList()
     }
 
-    private fun checkingList() {
-        if (checkWordList == true){
-            setWordRecyclerView()
+    private fun checkingList(words: List<WordsList>?) {
+        if (!words.isNullOrEmpty()){
+            setWordRecyclerView(words)
         }
     }
 

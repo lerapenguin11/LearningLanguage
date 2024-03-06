@@ -6,6 +6,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.word_presentation.R
+import com.google.android.material.progressindicator.CircularProgressIndicator
 
 class WordsViewHolder(view : View) : RecyclerView.ViewHolder(view)
 {
