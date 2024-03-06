@@ -51,7 +51,7 @@ class WordsFragment : Fragment() {
     }
 
     private fun checkWordsList(words: List<WordsList>?) {
-        if (words != null && words.size != 0){
+        if (!words.isNullOrEmpty()){
             checkWordList = true
             visibleAndGoneText()
         } else{
