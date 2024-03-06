@@ -1,6 +1,8 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -33,11 +35,20 @@ android {
 }
 
 dependencies {
+    implementation(project(":feature_word:word_domain"))
+    implementation(project(":feature_lists:lists_data"))
 
     implementation(Deps.core)
     implementation(Deps.appCompat)
     implementation(Deps.androidMaterial)
     implementation(Deps.constraintLayout)
+    implementation(platform(Deps.kotlin_bom))
+    implementation(DaggerHilt.hilt)
+    kapt(DaggerHilt.hiltAndroidCompiler)
+    implementation(Room.room)
+    kapt(Room.roomCompiler)
+    implementation(Libraries.gson)
+    implementation(Room.room_runtime)
     testImplementation(TestImplementation.junit)
     androidTestImplementation(AndroidTestImplementation.junit)
     androidTestImplementation(AndroidTestImplementation.espresso)

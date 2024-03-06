@@ -3,6 +3,7 @@ package com.example.learninglanguage.di
 import android.content.Context
 import com.example.learninglanguage.room.AppDatabase
 import com.example.lists_data.room.WordsDao
+import com.example.word_data.room.WordsListDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,5 +24,10 @@ class MainModule
     @Provides
     fun provideWordsDAO(appDatabase: AppDatabase): WordsDao {
         return appDatabase.getWordDao()
+    }
+
+    @Provides
+    fun provideWordListDAO(appDatabase: AppDatabase): WordsListDao {
+        return appDatabase.getWordsDao()
     }
 }

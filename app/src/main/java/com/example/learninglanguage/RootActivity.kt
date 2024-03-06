@@ -3,15 +3,12 @@ package com.example.learninglanguage
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.ListFragment
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import com.example.common_utils.utils.initFirebase
 import com.example.learninglanguage.databinding.ActivityRootBinding
 import com.example.learninglanguage.navigation.setupWithNavController
 import com.example.lists_presentation.ui.WordsListFragment
-import com.example.study_presentation.StudyFragment
-import com.example.word_presentation.WordsFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -87,12 +84,12 @@ class RootActivity : AppCompatActivity(R.layout.activity_root),
                     else -> "Top words"
                 }
                 binding.topAppBar.title = fragment
-                binding.topAppBar
             }
         }
     }
 
     override fun onTitleChanged(title: String) {
         binding.topAppBar.title = title
+        binding.topAppBar.setTitleTextAppearance(this, R.style.TopAppBarTextAppearance)
     }
 }
