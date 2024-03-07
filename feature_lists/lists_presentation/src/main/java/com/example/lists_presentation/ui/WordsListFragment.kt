@@ -20,17 +20,6 @@ class WordsListFragment : Fragment() {
     private var documentId: String? = null
     private val wordListViewModel : WordListViewModel by viewModels()
     private val adapter = WordsListAdapter()
-    private lateinit var toolbarTitleChangeListener: OnToolbarTitleChangeListener
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is OnToolbarTitleChangeListener) {
-            toolbarTitleChangeListener = context
-        } else {
-            throw RuntimeException("$context must implement OnToolbarTitleChangeListener")
-        }
-    }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,9 +55,9 @@ class WordsListFragment : Fragment() {
 
     private fun setToolbarTitle() {
         if (documentId != null){
-            toolbarTitleChangeListener.onTitleChanged(documentId!!)
+            binding.topAppBar.title = documentId
         } else{
-            toolbarTitleChangeListener.onTitleChanged(CONST_TITLE)
+            binding.topAppBar.title = CONST_TITLE
         }
     }
 
@@ -78,10 +67,6 @@ class WordsListFragment : Fragment() {
             binding.linearProgressIndicator.visibility = View.GONE
         })
         binding.rvWordsList.adapter = adapter
-    }
-
-    interface OnToolbarTitleChangeListener {
-        fun onTitleChanged(title: String)
     }
 
 

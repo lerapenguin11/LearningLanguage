@@ -27,3 +27,6 @@ include(":feature_lists:lists_presentation")
 include(":feature_word:word_presentation")
 include(":common:common_utils")
 
+include(":feature_detailed:detailed_data")
+include(":feature_detailed:detailed_domain")
+include(":feature_detailed:detailed_presentation")

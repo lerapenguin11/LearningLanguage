@@ -7,6 +7,24 @@
     android:layout_height="match_parent"
     tools:context=".ui.WordsListFragment">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/top_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            style="@style/StyleTopAppBar"
+            tools:title="Word part (1)"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/linearProgressIndicator"
         android:layout_width="match_parent"
@@ -15,7 +33,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_words_list"
@@ -24,7 +42,7 @@
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
         tools:listitem="@layout/item_word_not_fav" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

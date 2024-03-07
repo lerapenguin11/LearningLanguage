@@ -13,8 +13,7 @@ import com.example.lists_presentation.ui.WordsListFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class RootActivity : AppCompatActivity(R.layout.activity_root),
-    WordsListFragment.OnToolbarTitleChangeListener{
+class RootActivity : AppCompatActivity(R.layout.activity_root){
     private lateinit var binding: ActivityRootBinding
     private var currentNavController: LiveData<NavController>? = null
 
@@ -23,20 +22,9 @@ class RootActivity : AppCompatActivity(R.layout.activity_root),
         binding = ActivityRootBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.topAppBar.setTitleTextAppearance(this, R.style.TopAppBarTextAppearance)
-
         setNavController()
 
-        val sharedPref = getSharedPreferences(SHAR_PREF_NAME_NAV, Context.MODE_PRIVATE)
-        val currentFragmentId = sharedPref.getInt(KEY_SHAR_PREF_FRAGMENT_ID,
-            com.example.word_presentation.R.id.wordsFragment)
-
-        currentNavController?.value?.let { navController ->
-            navController.navigate(currentFragmentId)
-        }
-
         if (currentNavController != null){
-            setTitleToolbar()
             showAndHideBottomNavigationBar()
         }
     }
@@ -68,6 +56,12 @@ class RootActivity : AppCompatActivity(R.layout.activity_root),
         initFirebase()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        currentNavController = null
+        binding.navView.id = R.id.word_nav_graph
+    }
+
     private fun setNavController() {
         val navGraphIds = listOf(
             com.example.word_presentation.R.navigation.word_nav_graph,
@@ -82,35 +76,5 @@ class RootActivity : AppCompatActivity(R.layout.activity_root),
             intent = this.intent
         )
         currentNavController = controller
-    }
-
-    private fun setTitleToolbar() {
-        currentNavController!!.observeForever {navController ->
-            navController.addOnDestinationChangedListener { _, destination, _ ->
-                val fragment = when (destination.id) {
-                    com.example.word_presentation.R.id.wordsFragment -> "Слова"
-                    com.example.study_presentation.R.id.studyFragment -> "Изучение"
-                    com.example.lists_presentation.R.id.listsFragment -> "Списки"
-                    else -> "Top words"
-                }
-                binding.topAppBar.title = fragment
-
-                val sharedPref = getSharedPreferences(SHAR_PREF_NAME_NAV, Context.MODE_PRIVATE)
-                with(sharedPref.edit()) {
-                    putInt(KEY_SHAR_PREF_FRAGMENT_ID, destination.id)
-                    apply()
-                }
-            }
-        }
-    }
-
-    override fun onTitleChanged(title: String) {
-        binding.topAppBar.title = title
-        binding.topAppBar.setTitleTextAppearance(this, R.style.TopAppBarTextAppearance)
-    }
-
-    companion object{
-        const val SHAR_PREF_NAME_NAV = "navigation"
-        const val KEY_SHAR_PREF_FRAGMENT_ID = "currentFragment"
     }
 }

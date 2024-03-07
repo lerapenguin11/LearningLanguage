@@ -50,6 +50,7 @@ dependencies {
     implementation(project(":common:common_utils"))
     implementation(project(":feature_lists:lists_data"))
     implementation(project(":feature_word:word_data"))
+    implementation(project(":feature_detailed:detailed_presentation"))
 
     implementation(Deps.core)
     implementation(platform(Deps.kotlin_bom))

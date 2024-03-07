@@ -19,6 +19,7 @@ import com.example.word_presentation.adapter.viewHolder.WordsViewHolder
 class WordsAdapter() : ListAdapter<WordsList, WordsViewHolder>(
     WordsItemDiffCallback())
 {
+    var openDetails : ((WordsList) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordsViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
@@ -35,6 +36,10 @@ class WordsAdapter() : ListAdapter<WordsList, WordsViewHolder>(
         holder.notes.text = word.notes.toString().replace(
             Regex("[\\[\\]]"), "")
         holder.textProgress.text = word.progress.toString()
+
+        holder.itemView.setOnClickListener {
+            openDetails?.invoke(word)
+        }
         /*
         val progressPar : ProgressBar = view.findViewById(R.id.progress_bar)
         val doneProgress :*/

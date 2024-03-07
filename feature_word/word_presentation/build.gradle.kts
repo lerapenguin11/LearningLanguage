@@ -43,6 +43,7 @@ android {
 
 dependencies {
     implementation(project(":feature_word:word_domain"))
+    implementation(project(":feature_detailed:detailed_presentation"))
 
     implementation(Deps.core)
     implementation(Deps.appCompat)

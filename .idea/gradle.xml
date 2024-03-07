@@ -24,6 +24,10 @@
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/common/common_utils" />
+            <option value="$PROJECT_DIR$/feature_detailed" />
+            <option value="$PROJECT_DIR$/feature_detailed/detailed_data" />
+            <option value="$PROJECT_DIR$/feature_detailed/detailed_domain" />
+            <option value="$PROJECT_DIR$/feature_detailed/detailed_presentation" />
             <option value="$PROJECT_DIR$/feature_lists" />
             <option value="$PROJECT_DIR$/feature_lists/lists_data" />
             <option value="$PROJECT_DIR$/feature_lists/lists_domain" />

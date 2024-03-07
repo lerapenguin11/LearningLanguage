@@ -9,5 +9,10 @@
         android:id="@+id/wordsFragment"
         android:name="com.example.word_presentation.ui.WordsFragment"
         android:label="fragment_words"
-        tools:layout="@layout/fragment_words" />
+        tools:layout="@layout/fragment_words" >
+        <action
+            android:id="@+id/action_wordsFragment_to_detailed_nav_graph"
+            app:destination="@id/detailed_nav_graph" />
+    </fragment>
+    <include app:graph="@navigation/detailed_nav_graph" />
 </navigation>

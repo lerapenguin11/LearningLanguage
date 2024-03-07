@@ -84,4 +84,14 @@
         <item name="cardViewStyle">@style/Widget.Material3.CardView.Filled</item>
         <item name="cardBackgroundColor">@color/md_theme_dark_background</item>
     </style>
+
+    <style name="StyleTopAppBar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@color/color_toolbar_dark</item>
+        <item name="titleTextStyle">@style/TopAppBarTextAppearance</item>
+    </style>
+
+    <style name="TopAppBarTextAppearance">
+        <item name="android:fontFamily">@font/montserrat_semibold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
 </resources>

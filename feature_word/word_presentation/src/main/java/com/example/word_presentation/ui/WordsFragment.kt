@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.word_domain.model.WordsList
+import com.example.word_presentation.R
 import com.example.word_presentation.adapter.WordsAdapter
 import com.example.word_presentation.databinding.FragmentWordsBinding
 import com.example.word_presentation.viewmodel.WordsViewModel
@@ -44,6 +46,11 @@ class WordsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observerWordList()
+
+        adapter.openDetails = {
+            view.findNavController().navigate(
+                com.example.detailed_presentation.R.id.detailed_nav_graph)
+        }
     }
 
     private fun setupSwipeListener() {
