@@ -13,28 +13,112 @@
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-        style="?attr/collapsingToolbarLayoutLargeStyle"
-        android:layout_width="match_parent"
-        android:layout_height="152dp"
-        app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
-        app:contentScrim="?attr/colorPrimary">
+            style="@style/CollapsingToolbar"
+            app:collapsedTitleTextAppearance="@style/TopAppBarTextAppearance"
+            app:expandedTitleTextAppearance="@style/TextCollapsingToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:paddingBottom="16dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleGravity="center_vertical">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:src="@tools:sample/backgrounds/scenic" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="-10dp"
+                android:layout_gravity="end|bottom">
+
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    style="@style/CircularDeterminateProgressBar"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:progress="50" />
+
+                <TextView
+                    android:id="@+id/tv_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="50"
+                    style="@style/TextProgressPar"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/progress_bar" />
+
+                <ImageView
+                    android:id="@+id/ic_done_progress"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/progress_bar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_done"
+                    app:tint="?attr/colorOnSurface"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_voice_over"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                app:strokeWidth="0dp"
+                app:cardCornerRadius="2dp"
+                style="@style/Widget.Material3.CardView.Outlined"
+                app:cardBackgroundColor="@android:color/transparent"
+                android:layout_gravity="start|bottom"
+                android:layout_marginStart="13dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/icon_volume"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_volume"
+                        android:tint="?attr/colorOnTertiaryContainer"/>
+
+                    <TextView
+                        android:id="@+id/tv_transcription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        style="@style/TextStyleTranscription"
+                        android:includeFontPadding="false"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginBottom="1dp"
+                        android:text="nvkbnk'fjjk njnj" />
+                </LinearLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/material_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:elevation="0dp"
             app:navigationIcon="@drawable/ic_arrow_back"
             app:layout_collapseMode="pin"
             style="@style/StyleTopAppBar"
-            app:title="vnvnvnvvnnv"/>
-
-    </com.google.android.material.appbar.CollapsingToolbarLayout>
-
+            app:titleCentered="true"
+            app:titleTextAppearance="@font/montserrat_thin"
+            app:navigationIconTint="?attr/colorOnSurface"
+            app:title="people"/>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
 </com.google.android.material.appbar.AppBarLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

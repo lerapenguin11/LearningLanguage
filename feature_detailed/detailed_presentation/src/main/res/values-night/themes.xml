@@ -18,7 +18,7 @@
         <item name="colorOnErrorContainer">@color/md_theme_dark_onErrorContainer</item>
         <item name="android:colorBackground">@color/md_theme_dark_background</item>
         <item name="colorOnBackground">@color/md_theme_dark_onBackground</item>
-        <item name="colorSurface">@color/md_theme_dark_surface</item>
+        <item name="colorSurface">@color/color_toolbar_dark</item>
         <item name="colorOnSurface">@color/md_theme_dark_onSurface</item>
         <item name="colorSurfaceVariant">@color/md_theme_dark_surfaceVariant</item>
         <item name="colorOnSurfaceVariant">@color/md_theme_dark_onSurfaceVariant</item>
@@ -34,11 +34,42 @@
 
     <style name="StyleTopAppBar" parent="Widget.Material3.Toolbar">
         <item name="android:background">@color/color_toolbar_dark</item>
-        <item name="titleTextStyle">@style/TopAppBarTextAppearance</item>
+        <item name="android:titleTextStyle">@style/TopAppBarTextAppearance</item>
     </style>
 
     <style name="TopAppBarTextAppearance">
-        <item name="android:fontFamily">@font/montserrat_semibold</item>
+        <item name="android:fontFamily">@font/montserrat_thin</item>
         <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="CollapsingToolbar" parent="Widget.Material3.CollapsingToolbar.Large">
+        <item name="android:background">@color/color_toolbar_dark</item>
+        <item name="titleTextStyle">@style/TextCollapsingToolbar</item>
+    </style>
+
+    <style name="TextCollapsingToolbar" parent="TextAppearance.AppCompat.Title">
+        <item name="android:fontFamily">@font/montserrat_medium</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+
+    <style name="CircularDeterminateProgressBar">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/bg_progress_bar_dark</item>
+    </style>
+
+    <style name="TextProgressPar" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/montserrat_thin</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#E3E2E8</item>
+    </style>
+
+    <style name="TextStyleTranscription" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">?attr/colorOnTertiaryContainer</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="CardListStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="android:backgroundTint">@color/color_toolbar_dark</item>
     </style>
 </resources>
