@@ -1,5 +1,6 @@
 package com.example.learninglanguage
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -25,6 +26,15 @@ class RootActivity : AppCompatActivity(R.layout.activity_root),
         binding.topAppBar.setTitleTextAppearance(this, R.style.TopAppBarTextAppearance)
 
         setNavController()
+
+        val sharedPref = getSharedPreferences(SHAR_PREF_NAME_NAV, Context.MODE_PRIVATE)
+        val currentFragmentId = sharedPref.getInt(KEY_SHAR_PREF_FRAGMENT_ID,
+            com.example.word_presentation.R.id.wordsFragment)
+
+        currentNavController?.value?.let { navController ->
+            navController.navigate(currentFragmentId)
+        }
+
         if (currentNavController != null){
             setTitleToolbar()
             showAndHideBottomNavigationBar()
@@ -84,6 +94,12 @@ class RootActivity : AppCompatActivity(R.layout.activity_root),
                     else -> "Top words"
                 }
                 binding.topAppBar.title = fragment
+
+                val sharedPref = getSharedPreferences(SHAR_PREF_NAME_NAV, Context.MODE_PRIVATE)
+                with(sharedPref.edit()) {
+                    putInt(KEY_SHAR_PREF_FRAGMENT_ID, destination.id)
+                    apply()
+                }
             }
         }
     }
@@ -91,5 +107,10 @@ class RootActivity : AppCompatActivity(R.layout.activity_root),
     override fun onTitleChanged(title: String) {
         binding.topAppBar.title = title
         binding.topAppBar.setTitleTextAppearance(this, R.style.TopAppBarTextAppearance)
+    }
+
+    companion object{
+        const val SHAR_PREF_NAME_NAV = "navigation"
+        const val KEY_SHAR_PREF_FRAGMENT_ID = "currentFragment"
     }
 }
