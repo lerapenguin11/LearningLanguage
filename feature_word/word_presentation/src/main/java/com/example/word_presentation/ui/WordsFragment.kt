@@ -1,18 +1,21 @@
 package com.example.word_presentation.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.example.word_domain.model.WordsList
 import com.example.word_presentation.adapter.WordsAdapter
 import com.example.word_presentation.databinding.FragmentWordsBinding
 import com.example.word_presentation.viewmodel.WordsViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class WordsFragment : Fragment() {
@@ -43,6 +46,28 @@ class WordsFragment : Fragment() {
         observerWordList()
     }
 
+    private fun setupSwipeListener() {
+        val callback = object :
+            ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val item = adapter.currentList[viewHolder.adapterPosition]
+                wordListViewModel.deleteWord(item)
+            }
+
+        }
+
+        val itemTouchHelper = ItemTouchHelper(callback)
+        itemTouchHelper.attachToRecyclerView(binding.rvWordsList)
+    }
+
     private fun observerWordList() {
         wordListViewModel.wordList.observe(viewLifecycleOwner, Observer { words ->
             checkWordsList(words)
@@ -60,9 +85,12 @@ class WordsFragment : Fragment() {
         }
     }
 
-    private fun setWordRecyclerView(words: List<WordsList>) {
-        adapter.submitList(words)
+    private fun setWordRecyclerView() {
+        wordListViewModel.wordList.observe(viewLifecycleOwner, Observer {words ->
+            adapter.submitList(words)
+        })
         binding.rvWordsList.adapter = adapter
+        setupSwipeListener()
     }
 
     private fun visibleAndGoneText() {
@@ -80,7 +108,7 @@ class WordsFragment : Fragment() {
 
     private fun checkingList(words: List<WordsList>?) {
         if (!words.isNullOrEmpty()){
-            setWordRecyclerView(words)
+            setWordRecyclerView()
         }
     }
 

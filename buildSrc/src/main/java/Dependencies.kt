@@ -42,6 +42,7 @@ object Versions {
     const val flexbox = "3.0.0"
     const val gson = "2.8.7"
     const val timber = "4.7.1"
+    const val swipedecorator = "1.4"
 }
 
 object Firebase{
@@ -64,6 +65,7 @@ object Libraries{
     const val flexbox = "com.google.android.flexbox:flexbox:${Versions.flexbox}"
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+    const val swipedecorator = "it.xabaras.android:recyclerview-swipedecorator:${Versions.swipedecorator}"
 }
 
 object Deps {
