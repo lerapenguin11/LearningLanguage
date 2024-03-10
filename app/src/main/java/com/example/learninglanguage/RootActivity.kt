@@ -45,6 +45,7 @@ class RootActivity : AppCompatActivity(R.layout.activity_root){
                     com.example.study_presentation.R.id.studyFragment -> showBottomNavigationBar()
                     com.example.lists_presentation.R.id.listsFragment -> showBottomNavigationBar()
                     com.example.lists_presentation.R.id.wordsListFragment -> hideBottomNavigationBar()
+                    com.example.detailed_presentation.R.id.detailedFragment -> hideBottomNavigationBar()
                     else -> showBottomNavigationBar()
                 }
             }
@@ -58,8 +59,6 @@ class RootActivity : AppCompatActivity(R.layout.activity_root){
 
     override fun onDestroy() {
         super.onDestroy()
-        currentNavController = null
-        binding.navView.id = R.id.word_nav_graph
     }
 
     private fun setNavController() {
