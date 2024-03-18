@@ -64,13 +64,25 @@
     </style>
     
     <style name="TextStyleTranscription" parent="TextAppearance.AppCompat">
-        <item name="android:textColor">?attr/colorOnTertiaryContainer</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
         <item name="android:textSize">13sp</item>
         <item name="android:fontFamily">@font/montserrat</item>
     </style>
 
     <style name="CardListStyle" parent="Widget.MaterialComponents.CardView">
         <item name="android:backgroundTint">@color/color_toolbar_light</item>
+    </style>
+    
+    <style name="TextTitleBlockStyle">
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/montserrat_semibold</item>
+        <item name="android:textColor">@color/md_theme_light_onSecondaryContainer</item>
+    </style>
+
+    <style name="TextListBlock">
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textColor">@color/md_theme_light_onSecondaryContainer</item>
     </style>
 </resources>
 
