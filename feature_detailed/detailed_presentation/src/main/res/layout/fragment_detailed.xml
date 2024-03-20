@@ -203,6 +203,8 @@
                 android:layout_height="0dp"
                 android:layout_marginTop="14dp"
                 tools:itemCount="5"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"
                 android:overScrollMode="never"
                 tools:listitem="@layout/item_notes"
                 app:layout_constraintTop_toBottomOf="@+id/bt_add_notes"/>

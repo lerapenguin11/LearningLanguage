@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.example.detailed_presentation.adapter.NotesAdapter
 import com.example.detailed_presentation.adapter.TranslationAdapter
 import com.example.detailed_presentation.databinding.FragmentDetailedBinding
 import com.example.detailed_presentation.viewmodel.WordDetailedViewModel
@@ -22,6 +23,7 @@ class DetailedFragment : Fragment() {
     private var  wordId : Int? = null
     private var wordIsWordList : Word? = null
     private val adapterTranslation = TranslationAdapter()
+    private val adapterNote = NotesAdapter()
 
     //TODO поменять шрифт у title topAppBar
 
@@ -64,6 +66,12 @@ class DetailedFragment : Fragment() {
         binding.tvTranscription.text = word?.transcription
         binding.tvProgress.text = word?.progress.toString()
         setRecyclerViewTranslation(word?.translation)
+        setRecyclerViewNotes(word?.notes)
+    }
+
+    private fun setRecyclerViewNotes(notes: ArrayList<String>?) {
+        adapterNote.submitList(notes)
+        binding.rvNotes.adapter = adapterNote
     }
 
     private fun setRecyclerViewTranslation(translation : ArrayList<String>?) {

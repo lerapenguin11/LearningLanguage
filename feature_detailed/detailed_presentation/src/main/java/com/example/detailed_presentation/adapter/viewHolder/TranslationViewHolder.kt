@@ -1,4 +1,4 @@
-package com.example.detailed_presentation.adapter
+package com.example.detailed_presentation.adapter.viewHolder
 
 import android.view.View
 import android.widget.TextView

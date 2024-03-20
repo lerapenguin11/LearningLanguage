@@ -1,4 +1,4 @@
-package com.example.detailed_presentation.adapter
+package com.example.detailed_presentation.adapter.itemDiffCallback
 
 import androidx.recyclerview.widget.DiffUtil
 
