@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="160dp"
             android:paddingBottom="16dp"
+            app:expandedTitleMarginBottom="20dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleGravity="center_vertical">
@@ -165,6 +166,7 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="vertical"
                 tools:itemCount="4"
+                android:overScrollMode="never"
                 tools:listitem="@layout/item_translations"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -189,7 +191,7 @@
                 android:layout_marginEnd="16dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:layout_marginTop="16dp"
+
                 style="?attr/materialIconButtonStyle"
                 app:icon="@drawable/ic_edit_note"
                 app:layout_constraintEnd_toEndOf="parent"
