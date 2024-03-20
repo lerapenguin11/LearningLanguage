@@ -10,12 +10,10 @@ import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.example.word_domain.model.WordsList
-import com.example.word_presentation.R
+import com.example.word_domain.model.Word
 import com.example.word_presentation.adapter.WordsAdapter
 import com.example.word_presentation.databinding.FragmentWordsBinding
 import com.example.word_presentation.viewmodel.WordsViewModel
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -29,10 +27,10 @@ class WordsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        wordListViewModel.getWordList()
         if (savedInstanceState != null) {
             checkWordList = savedInstanceState.getBoolean(INTENT_BOOLEAN)
         }
-        wordListViewModel.getWordList()
     }
 
     override fun onCreateView(
@@ -46,10 +44,12 @@ class WordsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observerWordList()
-
-        adapter.openDetails = {
-            view.findNavController().navigate(
-                com.example.detailed_presentation.R.id.detailed_nav_graph)
+        adapter.openDetails = {word ->
+            val bundle = Bundle()
+            bundle.putParcelable(TAG_WORD, word)
+            view.findNavController()
+                .navigate(com.example.detailed_presentation.R.id.detailed_nav_graph,
+                bundle)
         }
     }
 
@@ -78,11 +78,10 @@ class WordsFragment : Fragment() {
     private fun observerWordList() {
         wordListViewModel.wordList.observe(viewLifecycleOwner, Observer { words ->
             checkWordsList(words)
-            checkingList(words)
         })
     }
 
-    private fun checkWordsList(words: List<WordsList>?) {
+    private fun checkWordsList(words: List<Word>?) {
         if (!words.isNullOrEmpty()){
             checkWordList = true
             visibleAndGoneText()
@@ -111,12 +110,7 @@ class WordsFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         visibleAndGoneText()
-    }
-
-    private fun checkingList(words: List<WordsList>?) {
-        if (!words.isNullOrEmpty()){
-            setWordRecyclerView()
-        }
+        setWordRecyclerView()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -132,5 +126,6 @@ class WordsFragment : Fragment() {
 
     companion object {
         const val INTENT_BOOLEAN = "check"
+        const val TAG_WORD = "tag_word"
     }
 }
