@@ -1,6 +1,6 @@
-package com.example.word_domain.model
+package com.example.detailed_domain.model
 
-data class WordsList(
+data class WordDetailed(
     val id : Int,
     val word : String,
     val translation : ArrayList<String>,

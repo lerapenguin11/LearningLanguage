@@ -1,25 +1,17 @@
 package com.example.word_presentation.adapter
 
-import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
-import com.example.word_domain.model.WordsList
+import com.example.word_domain.model.Word
 import com.example.word_presentation.R
 import com.example.word_presentation.adapter.itemDiffCallback.WordsItemDiffCallback
 import com.example.word_presentation.adapter.viewHolder.WordsViewHolder
 
-class WordsAdapter() : ListAdapter<WordsList, WordsViewHolder>(
+class WordsAdapter() : ListAdapter<Word, WordsViewHolder>(
     WordsItemDiffCallback())
 {
-    var openDetails : ((WordsList) -> Unit)? = null
+    var openDetails : ((Word) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordsViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
@@ -43,5 +35,9 @@ class WordsAdapter() : ListAdapter<WordsList, WordsViewHolder>(
         /*
         val progressPar : ProgressBar = view.findViewById(R.id.progress_bar)
         val doneProgress :*/
+    }
+
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
     }
 }

@@ -44,12 +44,17 @@ class WordsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observerWordList()
+        openDetailsFragment()
+    }
+
+    private fun openDetailsFragment() {
         adapter.openDetails = {word ->
             val bundle = Bundle()
+            bundle.putInt(TAG_WORD_ID, word.id)
             bundle.putParcelable(TAG_WORD, word)
-            view.findNavController()
-                .navigate(com.example.detailed_presentation.R.id.detailed_nav_graph,
-                bundle)
+            view?.findNavController()
+                ?.navigate(com.example.detailed_presentation.R.id.detailed_nav_graph,
+                    bundle)
         }
     }
 
@@ -126,6 +131,7 @@ class WordsFragment : Fragment() {
 
     companion object {
         const val INTENT_BOOLEAN = "check"
+        const val TAG_WORD_ID = "tag_word_id"
         const val TAG_WORD = "tag_word"
     }
 }

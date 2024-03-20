@@ -1,10 +1,10 @@
 package com.example.word_domain.repository
 
-import com.example.word_domain.model.WordsList
+import com.example.word_domain.model.Word
 import kotlinx.coroutines.flow.Flow
 
 interface WordsListRepository
 {
-    suspend fun getWordList(): Flow<List<WordsList>>
-    suspend fun deleteWord(word : WordsList)
+    suspend fun getWordList(): Flow<List<Word>>
+    suspend fun deleteWord(word : Word)
 }

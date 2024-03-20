@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.example.detailed_data.room.WordDetailedDao
 import com.example.lists_data.entities.Converters
 import com.example.lists_data.entities.WordEntity
 import com.example.lists_data.room.WordsDao
@@ -23,4 +24,6 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun getWordDao() : WordsDao
 
     abstract fun getWordsDao() : WordsListDao
+
+    abstract fun getWordDetailed() : WordDetailedDao
 }

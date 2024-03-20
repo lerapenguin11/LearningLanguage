@@ -1,12 +1,12 @@
-package com.example.word_data.mappers
+package com.example.detailed_data.mapper
 
+import com.example.detailed_domain.model.WordDetailed
 import com.example.lists_data.entities.WordEntity
-import com.example.word_domain.model.Word
 
-class WordListMapper
+class WordDetailedMapper
 {
-    fun toWordListIsEntity(wordEntity: WordEntity) : Word {
-        return Word(
+    fun fromEntityToWordDetailed(wordEntity: WordEntity) : WordDetailed {
+        return WordDetailed(
             id = wordEntity.id,
             word = wordEntity.word,
             transcription = wordEntity.transcription,
@@ -16,7 +16,7 @@ class WordListMapper
         )
     }
 
-    fun toWordEntity(word : Word): WordEntity {
+    fun fromWordDetailedToEntity(word : WordDetailed): WordEntity {
         return WordEntity(
             id = word.id,
             word = word.word,
