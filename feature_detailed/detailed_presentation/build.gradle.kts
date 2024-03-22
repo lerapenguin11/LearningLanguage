@@ -40,7 +40,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":feature_word:word_domain"))
     implementation(project(":feature_detailed:detailed_domain"))
 
     implementation(Deps.core)
@@ -69,6 +68,8 @@ dependencies {
     implementation(CoroutinesLifecycleScope.lifeCycleRuntime)
     implementation (ViewModelDelegate.viewModelDeligate)
     implementation(platform(Deps.kotlin_bom))
+    implementation(Libraries.swipedecorator)
+    implementation(Libraries.facebook_shimmer)
     testImplementation(TestImplementation.junit)
     androidTestImplementation(AndroidTestImplementation.junit)
     androidTestImplementation(AndroidTestImplementation.espresso)

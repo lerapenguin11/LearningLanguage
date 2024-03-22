@@ -4,4 +4,6 @@
     <string name="text_translations">Переводы</string>
     <string name="text_add_translation">Добавить перевод</string>
     <string name="text_notes">Заметки</string>
+    <string name="text_undo">отменить</string>
+    <string name="text_translation_deleted">Перевод был удален</string>
 </resources>

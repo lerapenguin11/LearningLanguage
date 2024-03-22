@@ -20,7 +20,7 @@ object Versions {
     const val roomVersion = "2.6.1"
     const val swipeRefresh = "1.1.0"
     const val kotlin_coroutines_adapter = "0.9.2"
-    const val lifecycle_version = "2.6.1"
+    const val lifecycle_version = "2.3.1"
     const val kotlin_stdlib_jdk7 = "1.8.0"
     const val kotlin_stdlib_jdk8 = "1.8.0"
     const val fragment = "1.3.0"

@@ -51,7 +51,9 @@ class WordsFragment : Fragment() {
         adapter.openDetails = {word ->
             val bundle = Bundle()
             bundle.putInt(TAG_WORD_ID, word.id)
-            bundle.putParcelable(TAG_WORD, word)
+            bundle.putString(TAG_WORD_TITLE, word.word)
+            bundle.putString(TAG_WORD_TRANSCRIPTION, word.transcription)
+            bundle.putInt(TAG_WORD_PROGRESS, word.progress)
             view?.findNavController()
                 ?.navigate(com.example.detailed_presentation.R.id.detailed_nav_graph,
                     bundle)
@@ -132,6 +134,8 @@ class WordsFragment : Fragment() {
     companion object {
         const val INTENT_BOOLEAN = "check"
         const val TAG_WORD_ID = "tag_word_id"
-        const val TAG_WORD = "tag_word"
+        const val TAG_WORD_TITLE = "tag_word_title"
+        const val TAG_WORD_TRANSCRIPTION = "tag_word_transcription"
+        const val TAG_WORD_PROGRESS = "tag_word_progress"
     }
 }

@@ -12,7 +12,8 @@
         tools:layout="@layout/fragment_words" >
         <action
             android:id="@+id/action_wordsFragment_to_detailed_nav_graph"
-            app:destination="@id/detailed_nav_graph" />
+            app:destination="@id/detailed_nav_graph"
+            app:popEnterAnim="@android:anim/fade_in" />
     </fragment>
     <include app:graph="@navigation/detailed_nav_graph" />
 </navigation>
