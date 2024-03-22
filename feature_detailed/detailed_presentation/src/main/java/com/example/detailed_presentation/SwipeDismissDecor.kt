@@ -1,17 +1,21 @@
 package com.example.detailed_presentation
 
 import android.graphics.Canvas
+import android.graphics.Paint
 import android.graphics.drawable.Drawable
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.abs
 import kotlin.math.round
 
+
 //TODO Вынести в отдельную фичу
 class SwipeDismissDecor(
     private val itemBg: Drawable,
     private val onSwipe: (RecyclerView.ViewHolder) -> Unit
 ) : ItemTouchHelper(object : SimpleCallback(0, START or END) {
+
+    private var p = Paint()
 
     override fun onMove(rv: RecyclerView, vh: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder) = false
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) = onSwipe(viewHolder)

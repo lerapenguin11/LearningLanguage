@@ -15,7 +15,7 @@ internal class TranslationAdapter(private val onReorder: (List<String>) -> Unit)
     TranslationItemDiffCallback()
 ) {
 
-    private val dragDecor = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
+    /*private val dragDecor = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
         ItemTouchHelper.UP or ItemTouchHelper.DOWN, 0
     ) {
 
@@ -74,7 +74,7 @@ internal class TranslationAdapter(private val onReorder: (List<String>) -> Unit)
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         recyclerView.addItemDecoration(dragDecor)
         dragDecor.attachToRecyclerView(recyclerView)
-    }
+    }*/
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TranslationViewHolder {
         val view = LayoutInflater

@@ -37,11 +37,10 @@ internal class DetailedView(
             adapter = adapterTranslation
             layoutManager = LinearLayoutManager(context)
             val swipeDecor =
-                SwipeDismissDecor(AppCompatResources.getDrawable(context, R.drawable.ic_delete)!!) {
+                SwipeDismissDecor(AppCompatResources.getDrawable(context, R.drawable.delete_item_hint_bg)!!) {
                     callback.onDeleteTrans(adapterTranslation.currentList[it.adapterPosition])
                 }
-            addItemDecoration(swipeDecor.also { it.attachToRecyclerView(this) })
-
+            addItemDecoration(swipeDecor.also { it.attachToRecyclerView(binding.rvTranslation) })
         }
     }
 

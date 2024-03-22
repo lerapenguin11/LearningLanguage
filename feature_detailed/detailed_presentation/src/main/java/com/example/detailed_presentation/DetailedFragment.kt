@@ -49,6 +49,10 @@ class DetailedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.materialToolbar.setTitleTextAppearance(requireContext(), R.style.TopAppBarTextAppearance)
+    }
+
+    override fun onResume() {
+        super.onResume()
         initDetailedView()
     }
 
