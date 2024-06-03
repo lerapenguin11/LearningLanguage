@@ -67,7 +67,7 @@ class WordListRepositoryImpl(private val wordDao: WordsDao) : WordListRepository
     }
 
     override suspend fun deleteWord(word: WordList) {
-        wordDao.deleteWord(mapper.toWordEntity(word))
+        wordDao.deleteWord(mapper.toWordEntityDelete(word))
     }
 
     companion object{

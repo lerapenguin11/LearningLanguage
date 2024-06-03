@@ -1,5 +1,7 @@
 package com.example.lists_data.mappers
 
+import com.example.lists_data.entities.StatusNotesEntity
+import com.example.lists_data.entities.TransferStatusEntity
 import com.example.lists_data.entities.WordEntity
 import com.example.lists_data.models.WordListModels
 import com.example.lists_domain.entity.WordList
@@ -41,7 +43,22 @@ class WordListMapper
             transcription = word.transcription,
             translation = word.translation,
             notes = word.notes,
-            progress = word.progress
+            progress = word.progress,
+            statusNotes = StatusNotesEntity.ACTIVE_ENTRY,
+            transferStatus = TransferStatusEntity.ACTIVE_ENTRY
+        )
+    }
+
+    fun toWordEntityDelete(word : WordList) : WordEntity{
+        return WordEntity(
+            id = word.id,
+            word = word.word,
+            transcription = word.transcription,
+            translation = word.translation,
+            notes = word.notes,
+            progress = word.progress,
+            statusNotes = StatusNotesEntity.INACTIVE_ENTRY,
+            transferStatus = TransferStatusEntity.INACTIVE_ENTRY
         )
     }
 

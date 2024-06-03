@@ -1,5 +1,7 @@
 package com.example.word_data.mappers
 
+import com.example.lists_data.entities.StatusNotesEntity
+import com.example.lists_data.entities.TransferStatusEntity
 import com.example.lists_data.entities.WordEntity
 import com.example.word_domain.model.Word
 
@@ -23,7 +25,9 @@ class WordListMapper
             transcription = word.transcription,
             translation = word.translation,
             notes = word.notes,
-            progress = word.progress
+            progress = word.progress,
+            statusNotes = StatusNotesEntity.INACTIVE_ENTRY,
+            transferStatus = TransferStatusEntity.INACTIVE_ENTRY
         )
     }
 }

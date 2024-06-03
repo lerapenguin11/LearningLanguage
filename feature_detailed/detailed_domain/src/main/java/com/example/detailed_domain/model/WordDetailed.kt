@@ -6,5 +6,17 @@ data class WordDetailed(
     val translation : ArrayList<String>,
     val transcription : String,
     val notes : ArrayList<String>,
-    val progress : Int
+    val progress : Int,
+    val transferStatus : TransferStatus,
+    val statusNotes : StatusNotes
 )
+
+enum class StatusNotes {
+    ACTIVE_ENTRY,
+    INACTIVE_ENTRY
+}
+
+enum class TransferStatus {
+    ACTIVE_ENTRY,
+    INACTIVE_ENTRY
+}

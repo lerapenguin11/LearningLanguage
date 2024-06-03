@@ -11,5 +11,17 @@ data class WordEntity(
     val translation : ArrayList<String>,
     val transcription : String,
     val notes : ArrayList<String>,
-    val progress : Int
+    val progress : Int,
+    val transferStatus : TransferStatusEntity,
+    val statusNotes : StatusNotesEntity
 )
+
+enum class StatusNotesEntity {
+    ACTIVE_ENTRY,
+    INACTIVE_ENTRY
+}
+
+enum class TransferStatusEntity {
+    ACTIVE_ENTRY,
+    INACTIVE_ENTRY
+}

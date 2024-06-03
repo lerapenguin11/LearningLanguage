@@ -11,7 +11,7 @@ import com.example.lists_data.entities.WordEntity
 import com.example.lists_data.room.WordsDao
 import com.example.word_data.room.WordsListDao
 
-@Database(entities = [WordEntity::class], version = 2, exportSchema = false)
+@Database(entities = [WordEntity::class], version = 3, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     companion object {
