@@ -5,10 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asFlow
 import androidx.lifecycle.coroutineScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.detailed_domain.model.TranslationDetailed
 import com.example.detailed_presentation.databinding.FragmentDetailedBinding
 import com.example.detailed_presentation.view.DetailedView
 import com.example.detailed_presentation.viewmodel.WordDetailedViewModel
@@ -63,7 +66,7 @@ class DetailedFragment : Fragment() {
 
             }
 
-            override fun onDeleteTrans(trans: String) {
+            override fun onDeleteTrans(trans: TranslationDetailed) {
 
             }
 

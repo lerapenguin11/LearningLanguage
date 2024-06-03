@@ -1,13 +1,14 @@
 package com.example.detailed_presentation.adapter.itemDiffCallback
 
 import androidx.recyclerview.widget.DiffUtil
+import com.example.detailed_domain.model.NotesDetailed
 
-class NotesItemDiffCallback : DiffUtil.ItemCallback<String>() {
-    override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
-        return oldItem.hashCode() == newItem.hashCode()
+class NotesItemDiffCallback : DiffUtil.ItemCallback<NotesDetailed>() {
+    override fun areItemsTheSame(oldItem: NotesDetailed, newItem: NotesDetailed): Boolean {
+        return oldItem.idNotes == newItem.idNotes
     }
 
-    override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
+    override fun areContentsTheSame(oldItem: NotesDetailed, newItem: NotesDetailed): Boolean {
         return oldItem == newItem
     }
 }

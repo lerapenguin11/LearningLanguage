@@ -6,6 +6,8 @@ import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.detailed_domain.model.NotesDetailed
+import com.example.detailed_domain.model.TranslationDetailed
 import com.example.detailed_presentation.R
 import com.example.detailed_presentation.SwipeDismissDecor
 import com.example.detailed_presentation.adapter.NotesAdapter
@@ -24,7 +26,7 @@ internal class DetailedView(
         fun onReorderTrans(newTrans: List<String>)
         //fun onAddTrans()
         //fun onEditTrans(trans: String)
-        fun onDeleteTrans(trans: String)
+        fun onDeleteTrans(trans: TranslationDetailed)
         fun onListen()
     }
 
@@ -39,12 +41,15 @@ internal class DetailedView(
             val swipeDecor =
                 SwipeDismissDecor(AppCompatResources.getDrawable(context, R.drawable.delete_item_hint_bg)!!) {
                     callback.onDeleteTrans(adapterTranslation.currentList[it.adapterPosition])
+                    showDeleteTransUndo {
+                    //TODO: дописать удаление
+                    }
                 }
             addItemDecoration(swipeDecor.also { it.attachToRecyclerView(binding.rvTranslation) })
         }
     }
 
-    fun showDeleteTransUndo(undo: () -> Unit) = with(binding) {
+    private fun showDeleteTransUndo(undo: () -> Unit) = with(binding) {
         Snackbar.make(root, R.string.text_translation_deleted, Snackbar.LENGTH_LONG)
             .setAction(R.string.text_undo) { undo() }
             .show()
@@ -62,13 +67,13 @@ internal class DetailedView(
         tvProgress.text = progress.toString()
     }
 
-    fun setTranslations(trans: List<String>?) = with(binding) {
+    fun setTranslations(trans: List<TranslationDetailed>?) = with(binding) {
         if (trans != null) {
             adapterTranslation.submitList(trans)
         }
     }
 
-    fun setNotes(notes: List<String>?) = with(binding) {
+    fun setNotes(notes: List<NotesDetailed>?) = with(binding) {
         if (notes != null) {
             adapterNotes.submitList(notes)
             rvNotes.adapter = adapterNotes

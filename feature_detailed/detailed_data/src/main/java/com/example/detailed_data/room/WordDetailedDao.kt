@@ -15,4 +15,6 @@ interface WordDetailedDao
     suspend fun deleteWordDetailed(word : WordEntity)
     @Update
     suspend fun updateWordDetailed(word: WordEntity)
+
+
 }

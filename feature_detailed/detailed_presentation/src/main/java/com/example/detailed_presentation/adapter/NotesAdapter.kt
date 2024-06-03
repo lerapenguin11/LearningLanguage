@@ -3,11 +3,12 @@ package com.example.detailed_presentation.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
+import com.example.detailed_domain.model.NotesDetailed
 import com.example.detailed_presentation.R
 import com.example.detailed_presentation.adapter.itemDiffCallback.NotesItemDiffCallback
 import com.example.detailed_presentation.adapter.viewHolder.NotesViewHolder
 
-class NotesAdapter : ListAdapter<String, NotesViewHolder>(
+class NotesAdapter : ListAdapter<NotesDetailed, NotesViewHolder>(
     NotesItemDiffCallback()
 )
 {
@@ -19,6 +20,6 @@ class NotesAdapter : ListAdapter<String, NotesViewHolder>(
 
     override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {
         val note = getItem(position)
-        holder.note.text = note
+        holder.note.text = note.notes
     }
 }

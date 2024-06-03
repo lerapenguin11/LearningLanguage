@@ -1,10 +1,14 @@
 package com.example.detailed_data.mapper
 
+import com.example.detailed_domain.model.NotesDetailed
 import com.example.detailed_domain.model.StatusNotes
 import com.example.detailed_domain.model.TransferStatus
+import com.example.detailed_domain.model.TranslationDetailed
 import com.example.detailed_domain.model.WordDetailed
+import com.example.lists_data.entities.Notes
 import com.example.lists_data.entities.StatusNotesEntity
 import com.example.lists_data.entities.TransferStatusEntity
+import com.example.lists_data.entities.Translation
 import com.example.lists_data.entities.WordEntity
 
 class WordDetailedMapper
@@ -14,12 +18,36 @@ class WordDetailedMapper
             id = wordEntity.id,
             word = wordEntity.word,
             transcription = wordEntity.transcription,
-            translation = wordEntity.translation,
-            notes = wordEntity.notes,
-            progress = wordEntity.progress,
-            statusNotes = statusNotesWordEntityToWordDetailed(wordEntity.statusNotes.name),
-            transferStatus =statusTransferWordEntityToWordDetailed(wordEntity.transferStatus.name)
+            translation = getTranslationWord(wordEntity.translation),
+            notes = getNotesWord(wordEntity.notes),
+            progress = wordEntity.progress
         )
+    }
+
+    private fun getTranslationWord(transEntity: List<Translation>): List<TranslationDetailed> {
+        val trans = arrayListOf<TranslationDetailed>()
+        transEntity.forEach {
+            trans.add(
+                TranslationDetailed(
+                trans = it.trans,
+                    transferStatus = statusTransferWordEntityToWordDetailed(it.transferStatus.name),
+                    idTrans = it.idTrans!!
+            ))
+        }
+        return trans
+    }
+
+    private fun getNotesWord(notesEntity: List<Notes>) : List<NotesDetailed>{
+        val notes = arrayListOf<NotesDetailed>()
+        notesEntity.forEach {
+            notes.add(
+                NotesDetailed(
+                notes = it.notes,
+                    statusNotes = statusNotesWordEntityToWordDetailed(it.statusNotes.name),
+                    idNotes = it.idNotes!!
+            ))
+        }
+        return notes
     }
 
     fun fromWordDetailedToEntity(word : WordDetailed): WordEntity {
@@ -27,12 +55,28 @@ class WordDetailedMapper
             id = word.id,
             word = word.word,
             transcription = word.transcription,
-            translation = word.translation,
-            notes = word.notes,
-            progress = word.progress,
-            statusNotes = statusNotesWordDetailedToWordEntity(word.statusNotes.name),
-            transferStatus = statusTransferWordDetailedToWordEntity(word.transferStatus.name)
+            translation = getTranslationEntity(word.translation),
+            notes = getNotesEntity(word.notes),
+            progress = word.progress
         )
+    }
+
+    private fun getTranslationEntity(translation: List<TranslationDetailed>) : List<Translation>{
+        val trans = arrayListOf<Translation>()
+        translation.forEach {
+            trans.add(Translation(trans = it.trans,
+                transferStatus = statusTransferWordDetailedToWordEntity(it.transferStatus.name)))
+        }
+        return trans
+    }
+
+    private fun getNotesEntity(notes: List<NotesDetailed>) : List<Notes>{
+        val notesList = arrayListOf<Notes>()
+        notes.forEach {
+            notesList.add(Notes(notes = it.notes,
+                statusNotes = statusNotesWordDetailedToWordEntity(it.statusNotes.name)))
+        }
+        return notesList
     }
 
     private fun statusNotesWordDetailedToWordEntity(name: String): StatusNotesEntity{
