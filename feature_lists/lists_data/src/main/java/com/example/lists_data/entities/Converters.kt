@@ -6,11 +6,6 @@ import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
 
 class Converters {
-    /*@TypeConverter
-    fun listToJson(value: List<String>?) = Gson().toJson(value)
-
-    @TypeConverter
-    fun jsonToList(value: String): ArrayList<String> = Gson().fromJson(value, Array<String>::class.java).toMutableList() as ArrayList<String>*/
 
     @TypeConverter
     fun fromTranslationList(value: List<Translation>): String {
