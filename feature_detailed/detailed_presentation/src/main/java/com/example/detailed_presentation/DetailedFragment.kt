@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asFlow
+import androidx.lifecycle.coroutineScope
 import com.example.detailed_presentation.databinding.FragmentDetailedBinding
 import com.example.detailed_presentation.view.DetailedView
 import com.example.detailed_presentation.viewmodel.WordDetailedViewModel
@@ -82,7 +83,6 @@ class DetailedFragment : Fragment() {
         postponeUntil {
             detailedViewModel.translation.awaitValue()
             detailedViewModel.notes.awaitValue() }
-
     }
 
     private fun setTextToolbar(detailedView: DetailedView) {

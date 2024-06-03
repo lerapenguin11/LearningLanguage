@@ -24,8 +24,8 @@ class WordDetailedViewModel @Inject constructor(
     private val deleteWordDetailedUseCase: DeleteWordDetailedUseCase,
 ) : ViewModel(), WordDetailedInterface
 {
-    private val _wordDetailed = MutableLiveData<WordDetailed?>()
-    val wordDetailed : LiveData<WordDetailed?> get() = _wordDetailed
+    private val _wordDetailed = MutableLiveData<WordDetailed>()
+    val wordDetailed : LiveData<WordDetailed> get() = _wordDetailed
 
     fun deleteWord(word : WordDetailed) {
         viewModelScope.launch {

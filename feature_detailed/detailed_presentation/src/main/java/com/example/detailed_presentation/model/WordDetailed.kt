@@ -12,3 +12,5 @@ data class WordDetailed(
     val notes : ArrayList<String>,
     val progress : Int
 ) : Parcelable
+
+//TODO удалить

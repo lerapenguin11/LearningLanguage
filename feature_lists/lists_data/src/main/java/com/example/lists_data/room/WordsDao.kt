@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import com.example.lists_data.entities.WordEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -19,4 +20,6 @@ interface WordsDao
 
     @Delete
     suspend fun deleteWord(word : WordEntity)
+
+    //suspend fun deleteTrans(trans : String)
 }
